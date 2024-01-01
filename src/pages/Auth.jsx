@@ -5,7 +5,7 @@ const Auth = () => {
   return (
     <div className="flex justify-center mt-10">
       <div className="w-full sm:max-w-sm">
-        {/* <SendOTPForm /> */}
+        <SendOTPForm />
         <CheckOTPForm />
       </div>
     </div>
