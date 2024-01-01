@@ -14,10 +14,10 @@ const SendOTPForm = () => {
             value={phonenumber}
             onChange={e => setPhonenumber(e.target.value)}
             id="phonenumber"
-            className="w-full py-3 px-4 rounded-xl text-secondary-900 border border-gray-300 hover:border-primary-500 focus:border-primary-500 focus:bg-white transition-all duration-300 ease-in-out focus:shadow-lg focus:shadow-primary-200"
+            className="textField__input"
           />
         </div>
-        <button className="px-4 py-2 font-bold bg-primary-900 text-white w-full rounded-xl hover:bg-primary-800 shadow-lg shadow-primary-300 transition-all duration-300">ارسال کد تایید</button>
+        <button className="btn btn--primary w-full">ارسال کد تایید</button>
       </form>
     </div>
   );
