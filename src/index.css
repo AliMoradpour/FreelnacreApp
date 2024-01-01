@@ -99,5 +99,10 @@ body {
 }
 * {
   box-sizing: border-box;
+  outline: none;
   scroll-behavior: smooth;
+}
+
+label{
+  display: block;
 }
