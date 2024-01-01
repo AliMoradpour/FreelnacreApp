@@ -75,7 +75,6 @@ html,
 body {
   font-family: "Vazirmatn", sans-serif;
   user-select: none;
-  min-height: 100vh;
 }
 * {
   box-sizing: border-box;
