@@ -1,12 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import OTPInput from "react-otp-input";
 import { checkOtp } from "../../services/authService";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
-const CheckOTPForm = ({ phoneNumber }) => {
+import { HiArrowRight } from "react-icons/hi";
+
+const RESEND_TIME = 90;
+
+const CheckOTPForm = ({ phoneNumber, onBack, onResendOtp }) => {
   const [otp, setOtp] = useState("");
+  const [time, setTime] = useState(RESEND_TIME);
   const navigate = useNavigate();
 
   const { isPending, error, data, mutateAsync } = useMutation({
@@ -20,9 +25,9 @@ const CheckOTPForm = ({ phoneNumber }) => {
       toast.success(message);
       if (user.isActive) {
         // push to panel based on role
-        if (user.role === "OWNER") navigate("/owner");
-        if (user.role === "FREELANCER") navigate("/freelancer");
-        if (user.role === "ADMIN") navigate("/admin");
+        // if (user.role === "OWNER") navigate("/owner");
+        // if (user.role === "FREELANCER") navigate("/freelancer");
+        // if (user.role === "ADMIN") navigate("/admin");
       } else {
         navigate("/complete-profile");
       }
@@ -32,8 +37,25 @@ const CheckOTPForm = ({ phoneNumber }) => {
     }
   };
 
+  useEffect(() => {
+    const timer = time > 0 && setInterval(() => setTime((t) => t - 1), 1000);
+    return () => {
+      if (timer) clearInterval(timer);
+    };
+  }, [time]);
+
   return (
     <div>
+      <button onClick={onBack}>
+        <HiArrowRight className="w-6 h-6 text-secondary-500" />
+      </button>
+      <div className="mb-3 text-secondary-500">
+        {time > 0 ? (
+          <p>{time} ثانیه تا ارسال مجدد کد</p>
+        ) : (
+          <button onClick={onResendOtp}>ارسال مجدد کد</button>
+        )}
+      </div>
       <form className="space-y-10" onSubmit={checkOtpHandler}>
         <p className="font-bold text-secondary-800">کد تایید را وارد کنید</p>
         <OTPInput
