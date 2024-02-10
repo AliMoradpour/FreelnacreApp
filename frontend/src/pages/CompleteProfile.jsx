@@ -1,8 +1,7 @@
+import CompleteProfileForm from "../features/authentication/CompleteProfileForm";
 
 const CompleteProfile = () => {
-  return (
-    <div>CompleteProfile</div>
-  )
-}
+  return <CompleteProfileForm />;
+};
 
-export default CompleteProfile
+export default CompleteProfile;
