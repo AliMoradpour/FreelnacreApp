@@ -1,11 +1,17 @@
-import Table from "../../ui/Table"
-import toLocalDateShort from "../../utils/toLocalDateShort"
-import { toPersianNumbersWithComma } from "../../utils/toPersianNumbers"
+import { useState } from "react";
+import Modal from "../../ui/Modal";
+import Table from "../../ui/Table";
+import toLocalDateShort from "../../utils/toLocalDateShort";
+import { toPersianNumbersWithComma } from "../../utils/toPersianNumbers";
+import { HioutlineTrash } from "react-icons/hi";
+import { TbPencilMinus } from "react-icons/tb";
 
-const ProjectRow = ({project, index}) => {
+const ProjectRow = ({ project, index }) => {
+  const [isEditOpen, setIsEditOpen] = useState(false);
+
   return (
     <Table.Row key={project._id}>
-    <td>{index + 1}</td>
+      <td>{index + 1}</td>
       <td>{truncateText(project.title, 30)}</td>
       <td>{project.category.title}</td>
       <td>{toPersianNumbersWithComma(project.budget)}</td>
@@ -27,9 +33,24 @@ const ProjectRow = ({project, index}) => {
           <span className="badge badge--danger">بسته</span>
         )}
       </td>
-      <td>...</td>
+      <td>
+        <div className="flex items-center gap-x-4">
+          <button onClick={() => setIsEditOpen(true)}>
+            <TbPencilMinus className="w-5 h-5 text-primary-900" />
+          </button>
+          <Modal
+            open={isEditOpen}
+            title="modal title"
+            onClose={() => setIsEditOpen(false)}>
+            this is modal...
+          </Modal>
+          <button>
+            <HioutlineTrash className="w-5 h-5 text-error" />
+          </button>
+        </div>
+      </td>
     </Table.Row>
-  )
-}
+  );
+};
 
-export default ProjectRow
+export default ProjectRow;
