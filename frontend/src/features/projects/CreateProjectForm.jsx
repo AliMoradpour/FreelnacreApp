@@ -4,10 +4,12 @@ import { set, useForm } from "react-hook-form";
 import RHFSelect from "../../ui/RHFSelect";
 import { TagsInput } from "react-tag-input-component";
 import DatePickerField from "../../ui/DatePickerField";
+import { useCategories } from "../../hooks/useCategories";
 
 const CreateProjectForm = () => {
   const [tags, setTags] = useState([]);
   const [date, setDate] = useState(new Date());
+  const { categories } = useCategories();
 
   const {
     register,
@@ -66,7 +68,7 @@ const CreateProjectForm = () => {
         name="category"
         required
         register={register}
-        options={[]}
+        options={categories}
       />
       <div>
         <label className="mb-2 block text-secondary-700">تگ</label>
