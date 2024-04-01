@@ -1,8 +1,7 @@
+import DashboardLayout from "../features/owner/DashboardLayout";
 
 const OwnerDashboard = () => {
-  return (
-    <div>Owner Dashboard</div>
-  )
-}
+  return <DashboardLayout />;
+};
 
-export default OwnerDashboard
+export default OwnerDashboard;
