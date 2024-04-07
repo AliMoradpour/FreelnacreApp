@@ -1,6 +1,12 @@
+import ProjectsHeader from "../features/Freelancer/Project/ProjectsHeader"
+import ProjectsTable from "../features/Freelancer/Project/ProjectsTable"
+
 function SubmitedProjects() {
   return (
-    <div>SubmitedProjects</div>
+    <div>
+      <ProjectsHeader />
+      <ProjectsTable />
+    </div>
   )
 }
 
