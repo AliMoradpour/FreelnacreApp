@@ -23,11 +23,11 @@ const options = [
 function ChangeProposalStatus({ proposalId, onClose }) {
   const { id: projectId } = useParams();
   const { register, handleSubmit } = useForm();
-  const { isupdating, ChangeProposalStatus } = useChangeProposalStatus();
+  const { isupdating, changeProposalStatus } = useChangeProposalStatus();
   const queryClient = useQueryClient();
 
   const onSubmit = (data) => {
-    ChangeProposalStatus(
+    changeProposalStatus(
       { proposalId,projectId, ...data },
       {
         onSuccess: () => {

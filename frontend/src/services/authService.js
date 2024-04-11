@@ -8,7 +8,9 @@ export function checkOtp(data) {
   return http.post("/user/check-otp", data).then(({ data }) => data.data);
 }
 export function completeProfile(data) {
-  return http.post("/user/complete-profile", data).then(({ data }) => data.data);
+  return http
+    .post("/user/complete-profile", data)
+    .then(({ data }) => data.data);
 }
 
 export function getUser(data) {
@@ -21,4 +23,10 @@ export function logoutApi() {
 
 export function getUsersApi() {
   return http.get("/admin/user/list").then(({ data }) => data.data);
+}
+
+export function changeUserStatusApi({ userId, data }) {
+  return http
+    .patch(`/admin/user/list/verify/${userId}`, data)
+    .then(({ data }) => data.data);
 }

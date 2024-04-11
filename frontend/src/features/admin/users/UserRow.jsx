@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Modal from "../../../ui/Modal";
 import useUsers from "../useUsers";
+import ChangeUserStatus from "./ChangeUserStatus";
 
 const statusStyle = [
   {
@@ -38,11 +39,9 @@ function UserRow({ user, index }) {
           open={open}
           onClose={() => setOpen(false)}
           title="تغییر وضعیت کاربر">
-          {/* <CreateProposal
-            onclose={() => setOpen(false)}
-            projectId={project._id}
-          /> */}
+          <ChangeUserStatus onclose={() => setOpen(false)} userId={user._id} />
         </Modal>
+
         <button onClick={() => setOpen(true)}>
           <MdAssignmentAdd className="w-5 h-5 text-primary-900" />
         </button>
